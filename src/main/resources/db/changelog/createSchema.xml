@@ -32,7 +32,7 @@
             <constraints nullable="false"/>
         </column>
 
-        <column name="mobile" type="int">
+        <column name="mobile" type="varchar(45)">
             <constraints nullable="false"/>
         </column>
 
@@ -41,6 +41,10 @@
         </column>
 
         <column name="occupation" type="varchar(45)">
+            <constraints nullable="false"/>
+        </column>
+
+        <column name="status" type="int">
             <constraints nullable="false"/>
         </column>
 

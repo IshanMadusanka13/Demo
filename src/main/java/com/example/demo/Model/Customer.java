@@ -3,9 +3,9 @@ package com.example.demo.Model;
 import com.example.demo.Enumset.Gender;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Generated;
 import lombok.NoArgsConstructor;
 import com.example.demo.Custom.mobileValidate;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -23,7 +23,7 @@ public class Customer implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cid")
-    private Integer customerid;
+    private int customerid;
 
     @Column(name = "name")
     @NotBlank(message = "Name Required")
@@ -33,13 +33,11 @@ public class Customer implements Serializable {
     @NotBlank(message = "NIC Required")
     private String nic;
 
-    @Column(name = "gender",columnDefinition = "char")
-    @Enumerated
+    @Column(name = "gender", columnDefinition = "CHAR")
+    @Enumerated(EnumType.ORDINAL)
     private Gender gender;
 
-    @NotBlank(message = "Date of Birth Required")
     @Column(name = "dob")
-    @DateTimeFormat(pattern = "dd-MM-yyyy")
     private Date dob;
 
     @Column(name = "address")
@@ -47,6 +45,7 @@ public class Customer implements Serializable {
     private String address;
 
     @NotBlank(message = "Mobile Required")
+    @mobileValidate
     @Column(name = "mobile")
     private String mobile;
 
@@ -58,4 +57,7 @@ public class Customer implements Serializable {
     @Column(name = "occupation")
     @NotBlank(message = "Occupation Required")
     private String occupation;
+
+    @Column(name = "status")
+    private int status;
 }
